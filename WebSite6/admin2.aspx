@@ -48,9 +48,10 @@
                     <tr>
                         <td>Date of Birth:</td>
                         <td>
-                            <asp:TextBox ID="dob" runat="server" TextMode="Date"></asp:TextBox></td>
+                            <asp:TextBox ID="dob" runat="server"></asp:TextBox></td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="dob" ErrorMessage="DOB Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="dob" ErrorMessage="DOB Required" ForeColor="Red" Display="Dynamic" Visible="False"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="dob" Display="Dynamic" ErrorMessage="Not a valid Date" ForeColor="Red" ValidationExpression="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)" Visible="False"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
@@ -64,17 +65,19 @@
                     <tr>
                         <td>Phone number:</td>
                         <td>
-                            <asp:TextBox ID="phone" runat="server" TextMode="Phone"></asp:TextBox></td>
+                            <asp:TextBox ID="phone" runat="server"></asp:TextBox></td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="phone" ErrorMessage="Phone No. Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="phone" ErrorMessage="Phone No. Required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="phone" Display="Dynamic" ErrorMessage="Invalid Phone number" ForeColor="Red" ValidationExpression="^[0-9]{10}$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
                         <td>EmailId:</td>
                         <td>
-                            <asp:TextBox ID="email" runat="server" TextMode="Email"></asp:TextBox></td>
+                            <asp:TextBox ID="email" runat="server"></asp:TextBox></td>
                         <td>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="email" ErrorMessage="Email id Required" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="email" ErrorMessage="Email id Required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="email" Display="Dynamic" ErrorMessage="Invalid Email Id" ForeColor="Red" ValidationExpression="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
                     <tr>
@@ -88,7 +91,7 @@
                     <tr>
                         <td>Year:</td>
                         <td>
-                            <asp:TextBox ID="year" runat="server" TextMode="Number"></asp:TextBox></td>
+                            <asp:TextBox ID="year" runat="server"></asp:TextBox></td>
                         <td>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="year" ErrorMessage="Year Required" ForeColor="Red"></asp:RequiredFieldValidator>
                         </td>

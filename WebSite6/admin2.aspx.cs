@@ -29,9 +29,33 @@ public partial class admin2 : System.Web.UI.Page
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["collegecs"].ConnectionString);
         conn.Open();
-        string studinsert = "insert into student values('"+Sid.Text+"','"+Name.Text+ "','" +dob.Text + "','" +address.Text + "','" +phone.Text + "','" +email.Text + "','" +course.Text + "','" +year.Text + "','" +RadioButtonList1.SelectedValue + "')";
-        SqlCommand cmd = new SqlCommand(studinsert, conn);
-        cmd.ExecuteNonQuery();
+        string studcheck = "select * from student where Sid='" + Sid.Text + "'";
+        SqlCommand cmd = new SqlCommand(studcheck, conn);
+        SqlDataReader dr = cmd.ExecuteReader();
+        if (dr.HasRows)
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert(' Student Id exists');</script>");
+        }
+        else
+        {
+            dr.Close();
+            string studinsert = "insert into student values('" + Sid.Text + "','" + Name.Text + "','" + dob.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + course.Text + "','" + year.Text + "','" + RadioButtonList1.SelectedValue + "')";
+            cmd = new SqlCommand(studinsert, conn);
+            cmd.ExecuteNonQuery();
+        }
+        Sid.Text = "";
+        Name.Text = "";
+        dob.Text = "";
+        address.Text = "";
+        phone.Text = "";
+        email.Text = "";
+        course.Text = "";
+        year.Text = "";
+        RadioButtonList1.SelectedIndex = 0;
+        if(!dr.IsClosed)
+        {
+            dr.Close();
+        }
         conn.Close();
     }
 
